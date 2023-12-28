@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: grid;
+            grid-gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Membership Data Form</h1>
+        <form id="membershipForm" method="post" action="{% url 'membership_form' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Name:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
+                {{ form.contact_number }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth:</label>
+                <input type="date" id="{{ form.date_of_birth.id_for_label }}" name="{{ form.date_of_birth.name }}" value="{{ form.date_of_birth.value }}">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email Id:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.address.id_for_label }}">Address:</label>
+                {{ form.address }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.date_of_joining.id_for_label }}">Date of Joining:</label>
+                <input type="date" id="{{ form.date_of_joining.id_for_label }}" name="{{ form.date_of_joining.name }}" value="{{ form.date_of_joining.value }}">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.payment.id_for_label }}">Payment:</label>
+                {{ form.payment }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.paid_by.id_for_label }}">Paid By:</label>
+                {{ form.paid_by }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.created_by.id_for_label }}">Created By:</label>
+                {{ form.created_by }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.plan_type.id_for_label }}">Plan Type:</label>
+                {{ form.plan_type }}
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
